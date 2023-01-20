@@ -56,6 +56,8 @@ const LoginForm = () => {
         >
           Continue
         </Button>
+
+        <img src="C:\Users\TVetle\Downloads\935.jpg"></img>
       </form>
     </>
   );

@@ -10,7 +10,6 @@ function LoginForm(){
         <input type="text" ></input>
         <Button class={buttonClass}
     onMouseEnter={() => setButtonClass("btn btn-primary animate__animated animate__hinge")}>Test</Button>
-
     </div>)
 }
 

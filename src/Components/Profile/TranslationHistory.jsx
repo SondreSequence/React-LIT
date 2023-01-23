@@ -1,23 +1,16 @@
-import { useEffect, useState } from "react";
-import TranslationHistoryItem from "./TranslationHistoryItem";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTranslationAsync } from "../Reducers/translationReducer";
 
-function TranslationHistory() {
-  const [translations, setTranslations] = useState("");
+const TranslationHistory = () => {
+  const dispatch = useDispatch();
+  const translations = useSelector((state) => state.translations);
 
   useEffect(() => {
-    if (typeof Storage !== "undefined") {
-      const storedTranslations = localStorage.getItem("translation");
-      if (storedTranslations) {
-        setTranslations(storedTranslations);
-      }
-    }
-  }, []);
+    dispatch(getTranslationAsync());
+  }, [dispatch]);
 
-  const translationList = translations.map((translation) => (
-    <TranslationHistoryItem key={translation} translation={translation} />
-  ));
-
-  return <ul>{translationList}</ul>;
-}
+  return <div>{}</div>;
+};
 
 export default TranslationHistory;

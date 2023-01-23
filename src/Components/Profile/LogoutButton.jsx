@@ -3,9 +3,7 @@ import { Button } from "react-bootstrap";
 
 function LogoutButton() {
   function handleClearLocalStorage() {
-    if (typeof Storage !== "undefined") {
-      localStorage.clear();
-    }
+    localStorage.clear();
   }
 
   return <Button onClick={handleClearLocalStorage}>Logout</Button>;

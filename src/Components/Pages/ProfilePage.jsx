@@ -5,7 +5,9 @@ import TranslationHistory from "../Profile/TranslationHistory";
 function ProfilePage() {
   return (
     <div>
+      <ProfileHeader />
       <LogoutButton />
+      <TranslationHistory />
     </div>
   );
 }

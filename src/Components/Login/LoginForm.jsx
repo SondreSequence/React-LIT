@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import "animate.css";
+import { loginUser } from "../api/user";
+import { storageSave } from "../storage";
 
 const usernameConfig = {
   required: true,
@@ -9,16 +11,25 @@ const usernameConfig = {
 };
 
 const LoginForm = () => {
-  const [buttonClass, setButtonClass] = useState("initial-class");
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const [loading, setLoading] = useState(false);
+  const [apiError, setApiError] = useState(null);
+
+  const onSubmit = async ({ username }) => {
+    setLoading(true);
+    const [error, user] = await loginUser(username);
+    if (error !== null) {
+      setApiError(error);
+    }
+    if (user !== null) {
+      storageSave("translation-user", user);
+    }
+    setLoading(false);
   };
 
   const errorMessage = (() => {
@@ -35,7 +46,6 @@ const LoginForm = () => {
     }
   })();
 
-  console.log(errors);
   return (
     <>
       <h1>Enter Username</h1>
@@ -49,30 +59,14 @@ const LoginForm = () => {
           />
           {errorMessage}
         </fieldset>
-        <Button
-          type="submit"
-          class={buttonClass}
-          onMouseEnter={() => setButtonClass("btn btn-primary")}
-        >
+        <button className="btn btn-primary" type="submit" disabled={loading}>
           Continue
-        </Button>
-
-        <img src="C:\Users\TVetle\Downloads\935.jpg"></img>
+        </button>
+        {loading && <p>Logging in...</p>}
+        {apiError && <p>{apiError}</p>}
       </form>
     </>
   );
 };
-
-/* function LoginForm(){
-    const [buttonClass, setButtonClass] = useState("initial-class");
-    
-    return(<div>
-        <h1 >Username or Email</h1>
-        <input type="text" ></input>
-        <Button class={buttonClass}
-    onMouseEnter={() => setButtonClass("btn btn-primary animate__animated animate__hinge")}>Test</Button>
-
-    </div>)
-} */
 
 export default LoginForm;

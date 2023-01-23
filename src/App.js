@@ -14,13 +14,13 @@ function App() {
       <div className="App">
         <header className="App-header">
           <NavLink className="App-link" to="/home">
-            <Button class="btn btn-primary">Home</Button>
+            <Button className="btn btn-primary">Home</Button>
           </NavLink>
           <NavLink className="App-link" to="/login">
-            <Button class="btn btn-primary">Login</Button>
+            <Button className="btn btn-primary">Login</Button>
           </NavLink>
           <NavLink className="App-link" to="/translate">
-            <Button class="btn btn-primary">Translate</Button>
+            <Button className="btn btn-primary">Translate</Button>
           </NavLink>
           <NavLink className="App-link" to="/profile">
             <Button class="btn btn-primary">Profile</Button>

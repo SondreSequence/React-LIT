@@ -1,12 +1,8 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from 'react-redux'
-import {
-  setImageData,
-  setTranslation,
-} from "./Reducers/translationReducer"
+import { useSelector, useDispatch } from "react-redux";
+import { setImageData, setTranslation } from "./Reducers/translationReducer";
 
-function Translate(){
-
+function Translate() {
   const englishSignsToHandEmojis = {
     A: require("../Individual_Signs/a.png"),
     B: require("../Individual_Signs/b.png"),
@@ -34,52 +30,77 @@ function Translate(){
     X: require("../Individual_Signs/x.png"),
     Y: require("../Individual_Signs/y.png"),
     Z: require("../Individual_Signs/z.png"),
-};
+  };
 
-function mapEnglishSignsToHandEmojis(signs) {
-  const imageSource = [];
-  for (const sign of signs) {
-    if (englishSignsToHandEmojis[sign]) {
-      imageSource.push(englishSignsToHandEmojis[sign]);     
+  function mapEnglishSignsToHandEmojis(signs) {
+    const imageSource = [];
+    for (const sign of signs) {
+      if (englishSignsToHandEmojis[sign]) {
+        imageSource.push(englishSignsToHandEmojis[sign]);
+      }
     }
+
+    dispatch(setImageData(imageSource));
   }
-  
-dispatch(setImageData(imageSource))}
 
-
-  const output = useSelector((state) => state.translation.currentTranslation)
-  const imageSource = useSelector((state) => state.translation.imageData)
+  const output = useSelector((state) => state.translation.currentTranslation);
+  const imageSource = useSelector((state) => state.translation.imageData);
   const dispatch = useDispatch();
 
-    const handleOnChange = (event) => {
-      dispatch(setTranslation(event.target.value))
-      }
+  const handleOnChange = (event) => {
+    dispatch(setTranslation(event.target.value));
+  };
 
-      const handleOnSubmit = (e) => {    
-        e.preventDefault()
-        mapEnglishSignsToHandEmojis(output.toUpperCase())
-      }
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    mapEnglishSignsToHandEmojis(output.toUpperCase());
+  };
 
-      function generateImages() {
-        const images = imageSource.map(image =>
-          <img src={image}></img>
-        );
-        return images;
-      }
+  function generateImages() {
+    const images = imageSource.map((image) => <img src={image}></img>);
+    return images;
+  }
 
-    const [textareaclassName, setTextAreaclassName] = useState("slowlyVisible form-control me-2 m-3 d-none");
-    return(
-        <nav className="flex-container navbar bg-body-tertiary">
-        <div className="container-fluid">
-          <form className="d-flex align-items-center mx-auto" role="search" onSubmit={handleOnSubmit}>
-            <input onChange={handleOnChange} className="form-control me-2 m-3" type="search" placeholder="Translate Text" aria-label="Search"/>
-            <button className="btn btn-outline-success" type="submit" onClick={() => setTextAreaclassName("slowlyVisible form-control me-2 m-3 animate__animated animate__rollIn animate__delay-0s")}>Submit</button>
-          </form>
-        </div>
-        <nav contentEditable="true" id="translateArea" className="container-fluid d-flex align-items-center mx-auto form-control me-2 m-3">
-          {generateImages()}
-          </nav> 
-      </nav>)
+  const [textareaclassName, setTextAreaclassName] = useState(
+    "slowlyVisible form-control me-2 m-3 d-none"
+  );
+  return (
+    <nav className="flex-container navbar bg-body-tertiary">
+      <div className="container-fluid">
+        <form
+          className="d-flex align-items-center mx-auto"
+          role="search"
+          onSubmit={handleOnSubmit}
+        >
+          <input
+            onChange={handleOnChange}
+            className="form-control me-2 m-3"
+            type="search"
+            placeholder="Translate Text"
+            aria-label="Search"
+          />
+          <button
+            className="btn btn-outline-success"
+            type="submit"
+            onClick={() =>
+              setTextAreaclassName(
+                "slowlyVisible form-control me-2 m-3 animate__animated animate__rollIn animate__delay-0s"
+              )
+            }
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+      <nav
+        contentEditable="true"
+        id="translateArea"
+        className="container-fluid d-flex align-items-center mx-auto form-control me-2 m-3"
+      >
+        {generateImages()}
+      </nav>
+    </nav>
+  );
 }
 
 export default Translate;

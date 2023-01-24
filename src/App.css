@@ -4,9 +4,9 @@
   align-content: center;
 }
 
-.navbar{
-  align-items: center;
-  align-content: center;
+#translateArea{
+ width: 50%;
+  
 }
 
 .slowlyVisible{

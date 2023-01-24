@@ -5,13 +5,13 @@ import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
-import Translate from "./Components/Translate";
+import Translate from "./Components/Translation/Translate";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <header className="App-header">
+        <header className="App-header ">
           <NavLink className="App-link" to="/home">
             <Button className="btn btn-primary">Home</Button>
           </NavLink>

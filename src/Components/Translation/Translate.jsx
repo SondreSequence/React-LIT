@@ -46,8 +46,8 @@ function Translate() {
     "slowlyVisible form-control me-2 m-3 d-none"
   );
   return (
-    <nav className="flex-container navbar bg-body-tertiary">
-      <div className="container-fluid">
+    <div className="w-50 mx-auto mb-5">
+      <div className="">
         <form
           className="d-flex align-items-center mx-auto"
           role="search"
@@ -55,13 +55,13 @@ function Translate() {
         >
           <input
             onChange={handleOnChange}
-            className="form-control me-2 m-3"
+            className="form-control me-2"
             type="search"
             placeholder="Translate Text"
             aria-label="Search"
           />
           <button
-            className="btn-purple btn btn-primary"
+            className="btn btn-info"
             type="submit"
             onClick={() =>
               setTextAreaclassName(
@@ -73,10 +73,10 @@ function Translate() {
           </button>
         </form>
       </div>
-      <nav id="translateArea" className="form-control mx-auto m-3">
+      <div id="translateArea" className="form-control mx-auto m-3 min-vh-">
         {generateImages(imageSource)}
-      </nav>
-    </nav>
+      </div>
+    </div>
   );
 }
 export default Translate;

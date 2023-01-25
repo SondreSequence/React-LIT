@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "animate.css";
-import { loginUser } from "../Api/user";
+import { loginUser } from "../api/user";
 import { storageSave } from "../storage";
 
 const usernameConfig = {

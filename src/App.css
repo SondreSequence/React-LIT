@@ -1,5 +1,6 @@
 .navbar {
-  background-color: rgb(113, 60, 162);
+  background-color: RGB(13 202 240);
+  color: black;
 }
 .slowlyVisible {
   animation: fadeIn 2s;

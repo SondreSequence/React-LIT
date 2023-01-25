@@ -10,12 +10,12 @@ import TranslatePage from "./Components/Pages/TranslatePage";
 
 function App() {
   return (
-    <div className="bg-dark vh-100">
+    <div className="bg-dark test">
       <BrowserRouter>
         <Navbar className="navbar">
           <Container>
-            <Navbar.Brand className="text-light">
-              Translatorizor
+            <Navbar.Brand className="text-dark">
+              <h2>Translatorizor</h2>
               {/* <img className="w-25 p-3" src={require("./Logo.png")}></img> */}
             </Navbar.Brand>
             <Nav>

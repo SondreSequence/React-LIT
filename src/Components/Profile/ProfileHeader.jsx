@@ -12,7 +12,7 @@ function ProfileHeader() {
     }
   }, []);
 
-  return <h1>Hello there {username.replace(/"/g, "")}</h1>;
+  return <h1 className="mt-5">Hello there {username.replace(/"/g, "")}</h1>;
 }
 
 export default ProfileHeader;

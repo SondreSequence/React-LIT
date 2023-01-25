@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchData } from "./Api/apiActions";
+import { fetchData } from "../Api/apiActions";
 
 function TranslationHistory() {
   const dispatch = useDispatch();

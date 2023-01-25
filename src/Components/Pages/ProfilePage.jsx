@@ -1,6 +1,6 @@
 import LogoutButton from "../Profile/LogoutButton";
 import ProfileHeader from "../Profile/ProfileHeader";
-import TranslationHistory from "../Profile/TranslationHistory";
+import TranslationHistory from "../Translation/TranslationHistory";
 
 function ProfilePage() {
   return (

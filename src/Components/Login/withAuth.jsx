@@ -6,7 +6,7 @@ function withAuth(Component) {
       console.log("HHHH");
       return <Component {...props} />;
     } else {
-      return <Navigate to="/home" />;
+      return <Navigate to="/login" />;
     }
   };
 }

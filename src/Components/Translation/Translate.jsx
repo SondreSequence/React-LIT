@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setTranslation } from "../Reducers/translationReducer";
-import ImageGeneration, {
-  MapEnglishSignsToHandEmojis,
-} from "./ImageGeneration";
+import { setImageData, setTranslation } from "../Reducers/translationReducer";
+
+import { mapEnglishSignsToHandEmojis, generateImages } from "./ImageGeneration";
 
 function Translate() {
   const output = useSelector((state) => state.translation.currentTranslation);
+  const imageSource = useSelector((state) => state.translation.imageData);
   const dispatch = useDispatch();
 
   const handleOnChange = (event) => {
@@ -15,7 +15,7 @@ function Translate() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    MapEnglishSignsToHandEmojis(output, dispatch);
+    mapEnglishSignsToHandEmojis(output.toUpperCase(), dispatch);
   };
 
   const [textareaclassName, setTextAreaclassName] = useState(
@@ -49,7 +49,13 @@ function Translate() {
           </button>
         </form>
       </div>
-      <ImageGeneration></ImageGeneration>
+      <nav
+        contentEditable="true"
+        id="translateArea"
+        className="mx-auto form-control"
+      >
+        {generateImages(imageSource)}
+      </nav>
     </nav>
   );
 }

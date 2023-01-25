@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { setImageData } from "../Reducers/translationReducer";
-export { MapEnglishSignsToHandEmojis };
+
+export { mapEnglishSignsToHandEmojis, generateImages };
 
 const englishSignsToHandEmojis = {
   A: require("./Individual_Signs/a.png"),
@@ -31,7 +32,7 @@ const englishSignsToHandEmojis = {
   Z: require("./Individual_Signs/z.png"),
 };
 
-function MapEnglishSignsToHandEmojis(signs, dispatch) {
+function mapEnglishSignsToHandEmojis(signs, dispatch) {
   const imageSource = [];
   for (const sign of signs) {
     if (englishSignsToHandEmojis[sign]) {
@@ -42,33 +43,7 @@ function MapEnglishSignsToHandEmojis(signs, dispatch) {
   dispatch(setImageData(imageSource));
 }
 
-export default function ImageGeneration() {
-  const imageSource = useSelector((state) => state.translation.imageData);
-
-  function randomizer(min, max) {
-    let previousNumbers = [];
-    let randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-    while (previousNumbers.includes(randomNumber)) {
-      randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-    }
-    previousNumbers.push(randomNumber);
-    return randomNumber;
-  }
-
-  function generateImages() {
-    const images = imageSource.map((image) => (
-      <img
-        key={randomizer(1, 1000)}
-        className="animate__animated animate__flip animate__delay-0s"
-        src={image}
-      ></img>
-    ));
-    return images;
-  }
-
-  return (
-    <div id="translateArea" className="form-control mx-auto m-3">
-      {generateImages()}
-    </div>
-  );
+function generateImages(imageSource) {
+  const images = imageSource.map((image) => <img src={image}></img>);
+  return images;
 }

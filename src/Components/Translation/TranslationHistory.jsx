@@ -17,8 +17,14 @@ function TranslationHistory() {
 
   return (
     <div>
-      <h1>API Data</h1>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <h1>Translations</h1>
+      {data.map((item) => (
+        <div key={item.id}>
+          {item.translations.map((translation) => (
+            <p key={translation}>{translation}</p>
+          ))}
+        </div>
+      ))}
     </div>
   );
 }

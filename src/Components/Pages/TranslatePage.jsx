@@ -1,4 +1,4 @@
-import Translate from "../../Translation/Translate";
+import Translate from "../Translation/Translate";
 import withAuth from "../Login/withAuth";
 
 function TranslatePage() {

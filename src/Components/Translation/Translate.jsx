@@ -1,50 +1,12 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setImageData, setTranslation } from "../Reducers/translationReducer";
+import { setTranslation } from "../Reducers/translationReducer";
+import ImageGeneration, {
+  MapEnglishSignsToHandEmojis,
+} from "./ImageGeneration";
 
 function Translate() {
-  const englishSignsToHandEmojis = {
-    A: require("./Individual_Signs/a.png"),
-    B: require("./Individual_Signs/b.png"),
-    C: require("./Individual_Signs/c.png"),
-    D: require("./Individual_Signs/d.png"),
-    E: require("./Individual_Signs/e.png"),
-    F: require("./Individual_Signs/f.png"),
-    G: require("./Individual_Signs/g.png"),
-    H: require("./Individual_Signs/h.png"),
-    I: require("./Individual_Signs/i.png"),
-    J: require("./Individual_Signs/j.png"),
-    K: require("./Individual_Signs/k.png"),
-    L: require("./Individual_Signs/l.png"),
-    M: require("./Individual_Signs/m.png"),
-    N: require("./Individual_Signs/n.png"),
-    O: require("./Individual_Signs/o.png"),
-    P: require("./Individual_Signs/p.png"),
-    Q: require("./Individual_Signs/q.png"),
-    R: require("./Individual_Signs/r.png"),
-    S: require("./Individual_Signs/s.png"),
-    T: require("./Individual_Signs/t.png"),
-    U: require("./Individual_Signs/u.png"),
-    V: require("./Individual_Signs/v.png"),
-    W: require("./Individual_Signs/w.png"),
-    X: require("./Individual_Signs/x.png"),
-    Y: require("./Individual_Signs/y.png"),
-    Z: require("./Individual_Signs/z.png"),
-  };
-
-  function mapEnglishSignsToHandEmojis(signs) {
-    const imageSource = [];
-    for (const sign of signs) {
-      if (englishSignsToHandEmojis[sign]) {
-        imageSource.push(englishSignsToHandEmojis[sign]);
-      }
-    }
-
-    dispatch(setImageData(imageSource));
-  }
-
   const output = useSelector((state) => state.translation.currentTranslation);
-  const imageSource = useSelector((state) => state.translation.imageData);
   const dispatch = useDispatch();
 
   const handleOnChange = (event) => {
@@ -53,18 +15,8 @@ function Translate() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    mapEnglishSignsToHandEmojis(output.toUpperCase());
+    MapEnglishSignsToHandEmojis(output, dispatch);
   };
-
-  function generateImages() {
-    const images = imageSource.map((image) => (
-      <img
-        className="animate__animated animate__flip animate__delay-0s"
-        src={image}
-      ></img>
-    ));
-    return images;
-  }
 
   const [textareaclassName, setTextAreaclassName] = useState(
     "slowlyVisible form-control me-2 m-3 d-none"
@@ -97,14 +49,7 @@ function Translate() {
           </button>
         </form>
       </div>
-
-      <nav
-        contentEditable="true"
-        id="translateArea"
-        className="form-control mx-auto m-3"
-      >
-        {generateImages()}
-      </nav>
+      <ImageGeneration></ImageGeneration>
     </nav>
   );
 }

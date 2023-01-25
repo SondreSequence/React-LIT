@@ -1,13 +1,12 @@
-import { useHistory } from "react-router-dom";
-
+import { Navigate } from "react-router-dom";
 function withAuth(Component) {
   return function (props) {
-    const history = useHistory();
+    //condition to navigate to page
     if (localStorage.getItem("translation-user") !== null) {
+      console.log("HHHH");
       return <Component {...props} />;
     } else {
-      history.push("/");
-      return null;
+      return <Navigate to="/" />;
     }
   };
 }

@@ -5,46 +5,29 @@ import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
 import { Container, Button, Nav, Navbar, Buttonbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
-import Translate from "./Components/Translate";
-import ProfilePage from "./Components/Pages/ProfilePage";
+import TranslatePage from "./Components/Pages/TranslatePage";
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar className="App bg-light">
-        <Container>
-          <Navbar.Brand>Translation App</Navbar.Brand>
-          <Nav>
-            <Nav.Link>
-              <NavLink to="/home">
-                <Button variant="dark">Home</Button>
-              </NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="/login">
-                <Button variant="dark">Login</Button>
-              </NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="/translate">
-                <Button variant="dark">Translate</Button>
-              </NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="/profile">
-                <Button variant="dark">Profile</Button>
-              </NavLink>
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
-
-      <Routes>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/home" element={<HomePage />}></Route>
-        <Route path="/translate" element={<Translate />}></Route>
-        <Route path="/profile" element={<ProfilePage />}></Route>
-      </Routes>
+      <div className="App">
+        <header className="App-header ">
+          <NavLink className="App-link" to="/home">
+            <Button className="btn btn-primary">Home</Button>
+          </NavLink>
+          <NavLink className="App-link" to="/login">
+            <Button className="btn btn-primary">Login</Button>
+          </NavLink>
+          <NavLink className="App-link" to="/translate">
+            <Button className="btn btn-primary">Translate</Button>
+          </NavLink>
+          <Routes>
+            <Route path="/login" element={<LoginPage />}></Route>
+            <Route path="/home" element={<HomePage />}></Route>
+            <Route path="/translate" element={<TranslatePage />}></Route>
+          </Routes>
+        </header>
+      </div>
     </BrowserRouter>
   );
 }

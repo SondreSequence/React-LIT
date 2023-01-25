@@ -26,7 +26,9 @@ const LoginForm = () => {
       setApiError(error);
     }
     if (user !== null) {
+      username = username.toString();
       storageSave("translation-user", user);
+      storageSave("username", username);
     }
     setLoading(false);
   };

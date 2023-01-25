@@ -1,14 +1,6 @@
-/* .App {
-  text-align: center;
-  align-items: center;
-  align-content: center;
-} */
-
 .navbar {
-  align-items: center;
-  align-content: center;
+  background-color: rgb(113, 60, 162);
 }
-
 .slowlyVisible {
   animation: fadeIn 2s;
 }

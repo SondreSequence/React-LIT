@@ -4,10 +4,10 @@ import TranslationHistory from "../Translation/TranslationHistory";
 
 function ProfilePage() {
   return (
-    <div>
+    <div className="d-flex mx-auto flex-column justify-content-center text-center text-light w-50 ">
       <ProfileHeader />
-      <LogoutButton />
       <TranslationHistory />
+      <LogoutButton />
     </div>
   );
 }

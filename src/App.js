@@ -10,44 +10,47 @@ import TranslatePage from "./Components/Pages/TranslatePage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar className="App bg-light">
-        <Container>
-          <Navbar.Brand>
-            <img className="w-25 p-3" src={require("./Logo.png")}></img>
-          </Navbar.Brand>
-          <Nav>
-            <Nav.Link>
-              <NavLink to="/home">
-                <Button variant="dark">Home</Button>
-              </NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="/login">
-                <Button variant="dark">Login</Button>
-              </NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="/translate">
-                <Button variant="dark">Translate</Button>
-              </NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="/profile">
-                <Button variant="dark">Profile</Button>
-              </NavLink>
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+    <div className="bg-dark vh-100">
+      <BrowserRouter>
+        <Navbar className="navbar">
+          <Container>
+            <Navbar.Brand className="text-light">
+              Translatorizor
+              {/* <img className="w-25 p-3" src={require("./Logo.png")}></img> */}
+            </Navbar.Brand>
+            <Nav>
+              <Nav.Link>
+                <NavLink to="/home">
+                  <Button variant="dark">Home</Button>
+                </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/login">
+                  <Button variant="dark">Login</Button>
+                </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/translate">
+                  <Button variant="dark">Translate</Button>
+                </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/profile">
+                  <Button variant="dark">Profile</Button>
+                </NavLink>
+              </Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
 
-      <Routes>
-        <Route path="/login" element={<LoginPage />}></Route>
-        <Route path="/home" element={<HomePage />}></Route>
-        <Route path="/translate" element={<TranslatePage />}></Route>
-        <Route path="/profile" element={<ProfilePage />}></Route>
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<LoginPage />}></Route>
+          <Route path="/home" element={<HomePage />}></Route>
+          <Route path="/translate" element={<TranslatePage />}></Route>
+          <Route path="/profile" element={<ProfilePage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

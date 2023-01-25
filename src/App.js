@@ -6,7 +6,7 @@ import { Container, Button, Nav, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
 import ProfilePage from "./Components/Pages/ProfilePage";
-import Translate from "./Components/Translation/Translate";
+import TranslatePage from "./Components/Pages/TranslatePage";
 
 function App() {
   return (
@@ -42,7 +42,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/home" element={<HomePage />}></Route>
-        <Route path="/translate" element={<Translate />}></Route>
+        <Route path="/translate" element={<TranslatePage />}></Route>
         <Route path="/profile" element={<ProfilePage />}></Route>
       </Routes>
     </BrowserRouter>

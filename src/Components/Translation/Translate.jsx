@@ -49,11 +49,7 @@ function Translate() {
           </button>
         </form>
       </div>
-      <nav
-        contentEditable="true"
-        id="translateArea"
-        className="mx-auto form-control"
-      >
+      <nav id="translateArea" className="form-control mx-auto m-3">
         {generateImages(imageSource)}
       </nav>
     </nav>

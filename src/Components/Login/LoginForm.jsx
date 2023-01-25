@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import "animate.css";
-import { loginUser } from "../api/user";
+import { loginUser } from "../Api/user";
 import { storageSave } from "../storage";
 
 const usernameConfig = {

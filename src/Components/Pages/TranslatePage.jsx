@@ -1,11 +1,13 @@
-import TranslateForm from "../TranslateForm";
-import Translate from "../Translate";
+import Translate from "../../Translation/Translate";
+import withAuth from "../Login/withAuth";
 
-function TranslatePage(){
-    return(<div>
-        <h1>Translate Page</h1>
-        <Translate/>
-    </div>)
+function TranslatePage() {
+  return (
+    <div>
+      <h1>Translate Page</h1>
+      <Translate />
+    </div>
+  );
 }
 
-export default TranslatePage;
+export default withAuth(TranslatePage);

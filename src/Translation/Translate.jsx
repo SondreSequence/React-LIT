@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setImageData, setTranslation } from "./Reducers/translationReducer";
+import {
+  setImageData,
+  setTranslation,
+} from "../Components/Reducers/translationReducer";
 
 function Translate() {
   const englishSignsToHandEmojis = {

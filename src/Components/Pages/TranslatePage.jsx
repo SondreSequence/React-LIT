@@ -1,5 +1,5 @@
-import TranslateForm from "../TranslateForm";
-import Translate from "../Translate";
+import Translate from "../Translation/Translate"
+import withAuth from "../Login/withAuth";
 
 function TranslatePage(){
     return(<div>
@@ -8,4 +8,4 @@ function TranslatePage(){
     </div>)
 }
 
-export default TranslatePage;
+export default withAuth(TranslatePage);

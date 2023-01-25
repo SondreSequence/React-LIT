@@ -13,7 +13,9 @@ function App() {
     <BrowserRouter>
       <Navbar className="App bg-light">
         <Container>
-          <Navbar.Brand>Translation App</Navbar.Brand>
+          <Navbar.Brand>
+            <img className="w-25 p-3" src={require("./Logo.png")}></img>
+          </Navbar.Brand>
           <Nav>
             <Nav.Link>
               <NavLink to="/home">

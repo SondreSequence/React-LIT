@@ -15,7 +15,7 @@ function App() {
           <Navbar.Brand>Translation App</Navbar.Brand>
           <Nav>
             <Nav.Link>
-              <NavLink to="/login">
+              <NavLink to="/">
                 <Button variant="dark">Login</Button>
               </NavLink>
             </Nav.Link>
@@ -34,7 +34,7 @@ function App() {
       </Navbar>
 
       <Routes>
-        <Route path="/login" element={<LoginPage />}></Route>
+        <Route exact path="/" element={<LoginPage />}></Route>
         <Route path="/translate" element={<TranslatePage />}></Route>
         <Route path="/profile" element={<ProfilePage />}></Route>
       </Routes>

@@ -1,11 +1,11 @@
 import { Navigate } from "react-router-dom";
-function withAuth(Component) {
+function loggedIn(Component) {
   return function (props) {
     if (localStorage.getItem("translation-user") !== null) {
-      return <Component {...props} />;
+      return <Navigate to="/translate" />;
     } else {
-      return <Navigate to="/" />;
+      return <Component {...props} />;
     }
   };
 }
-export default withAuth;
+export default loggedIn;

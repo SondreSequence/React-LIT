@@ -1,5 +1,5 @@
 import LoginForm from "../Login/LoginForm";
-
+import loggedIn from "../Login/loggedIn";
 function LoginPage() {
   return (
     <div>
@@ -9,4 +9,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default loggedIn(LoginPage);

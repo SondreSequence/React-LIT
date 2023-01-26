@@ -9,32 +9,37 @@ import TranslatePage from "./Components/Pages/TranslatePage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar className="App bg-light">
-        <Container>
-          <Navbar.Brand>Translation App</Navbar.Brand>
-          <Nav>
-            <Nav.Link>
-              <NavLink to="/">
-                <Button variant="dark">Login</Button>
-              </NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="/translate">
-                <Button variant="dark">Translate</Button>
-              </NavLink>
-            </Nav.Link>
-            <Nav.Link>
-              <NavLink to="/profile">
-                <Button variant="dark">Profile</Button>
-              </NavLink>
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+    <div className="bg-dark test">
+      <BrowserRouter>
+        <Navbar className="navbar">
+          <Container>
+            <Navbar.Brand className="text-dark">
+              <h2>Translatorizor</h2>
+              {/* <img className="w-25 p-3" src={require("./Logo.png")}></img> */}
+            </Navbar.Brand>
+            <Nav>
+              <Nav.Link>
+                <NavLink to="/">
+                  <Button variant="dark">Login</Button>
+                </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/translate">
+                  <Button variant="dark">Translate</Button>
+                </NavLink>
+              </Nav.Link>
+              <Nav.Link>
+                <NavLink to="/profile">
+                  <Button variant="dark">Profile</Button>
+                </NavLink>
+              </Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
+        <div/>
 
       <Routes>
-        <Route exact path="/" element={<LoginPage />}></Route>
+        <Route path="/" element={<LoginPage />}></Route>
         <Route path="/translate" element={<TranslatePage />}></Route>
         <Route path="/profile" element={<ProfilePage />}></Route>
       </Routes>

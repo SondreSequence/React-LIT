@@ -28,6 +28,7 @@ const englishSignsToHandEmojis = {
   Y: require("./Individual_Signs/y.png"),
   Z: require("./Individual_Signs/z.png"),
 };
+
 function mapEnglishSignsToHandEmojis(signs, dispatch) {
   const imageSource = [];
   for (const sign of signs) {
@@ -37,28 +38,18 @@ function mapEnglishSignsToHandEmojis(signs, dispatch) {
   }
   dispatch(setImageData(imageSource));
 }
-function randomizer(min, max) {
-  let previousNumbers = [];
-  let randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-  while (previousNumbers.includes(randomNumber)) {
-    randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-  }
-  previousNumbers.push(randomNumber);
-  return randomNumber;
-}
+
 function generateImages(imageSource, output) {
 
   const randomanimations = ["animate__rollIn","animate__zoomInRight", "animate__flip"];
   let randomIndex = Math.floor(Math.random() * randomanimations.length);
-
   let randomanimationclass = "animate__animated " + randomanimations[randomIndex] + " animate__delay-0s"
-
   let images = [];
 
   if (output.includes("rick") || output.includes("Rick")) {
-    images = imageSource.map((image) => (
+    images = imageSource.map((image, index) => (
       <img
-        key={randomizer(1, 1000)}
+        key={index}
         style={{ width: "150px", height: "100px" }}
         className={randomanimationclass}
         src={
@@ -68,9 +59,9 @@ function generateImages(imageSource, output) {
     ));
     return images;
   }
-  images = imageSource.map((image) => (
+  images = imageSource.map((image, index) => (
     <img
-      key={randomizer(1, 1000)}
+      key={index}
       src={image}
     ></img>
   ));

@@ -40,11 +40,10 @@ const LoginForm = () => {
     if (error !== null) {
       setApiError(error);
     }
+    
     if (user !== null) {
-
       dispatch(setUsername(username))
       dispatch(setID(user.id))
-
       storageSave("username", username);
       storageSave("translation-user", user);
       setUser(user);

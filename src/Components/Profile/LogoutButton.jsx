@@ -12,7 +12,7 @@ function LogoutButton() {
   const dispatch = useDispatch();
 
   return (
-    <Link to="/login">
+    <Link to="/">
       <button
         className="btn btn-info all-button mt-5"
         onClick={() => {

@@ -36,14 +36,14 @@ function App() {
             </Nav>
           </Container>
         </Navbar>
-        <div/>
 
-      <Routes>
-        <Route path="/" element={<LoginPage />}></Route>
-        <Route path="/translate" element={<TranslatePage />}></Route>
-        <Route path="/profile" element={<ProfilePage />}></Route>
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginPage />}></Route>
+          <Route path="/translate" element={<TranslatePage />}></Route>
+          <Route path="/profile" element={<ProfilePage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 

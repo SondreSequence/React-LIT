@@ -1,4 +1,3 @@
-import { async } from "q";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -19,8 +18,8 @@ function LogoutButton() {
         onClick={() => {
           localStorage.clear();
           dispatch(setTranslations([]));
-          dispatch(setID(0))
-          dispatch(setUsername(""))
+          dispatch(setID(0));
+          dispatch(setUsername(""));
         }}
       >
         Logout

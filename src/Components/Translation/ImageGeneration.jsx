@@ -1,8 +1,5 @@
-import { useSelector, useDispatch } from "react-redux";
 import { setImageData } from "../Reducers/translationReducer";
-
 export { mapEnglishSignsToHandEmojis, generateImages };
-
 const englishSignsToHandEmojis = {
   A: require("./Individual_Signs/a.png"),
   B: require("./Individual_Signs/b.png"),
@@ -39,25 +36,32 @@ function mapEnglishSignsToHandEmojis(signs, dispatch) {
       imageSource.push(englishSignsToHandEmojis[sign]);
     }
   }
-
   dispatch(setImageData(imageSource));
 }
 
-function randomizer(min, max) {
-  let previousNumbers = [];
-  let randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-  while (previousNumbers.includes(randomNumber)) {
-    randomNumber = Math.floor(Math.random() * (max - min + 1) + min);
-  }
-  previousNumbers.push(randomNumber);
-  return randomNumber;
-}
+function generateImages(imageSource, output) {
 
-function generateImages(imageSource) {
-  const images = imageSource.map((image) => (
+  const randomanimations = ["animate__rollIn","animate__zoomInRight", "animate__flip"];
+  let randomIndex = Math.floor(Math.random() * randomanimations.length);
+  let randomanimationclass = "animate__animated " + randomanimations[randomIndex] + " animate__delay-0s"
+  let images = [];
+
+  if (output.includes("rick") || output.includes("Rick")) {
+    images = imageSource.map((image, index) => (
+      <img
+        key={index}
+        style={{ width: "150px", height: "100px" }}
+        className={randomanimationclass}
+        src={
+          "https://media1.giphy.com/media/7B25Ol4JQ3IMwQ7cxG/200w.gif?cid=82a1493bl9whn39jxp0f5kmtuff7bloxkruehil8dmldc45l&rid=200w.gif&ct=s"
+        }
+      ></img>
+    ));
+    return images;
+  }
+  images = imageSource.map((image, index) => (
     <img
-      key={randomizer(1, 1000)}
-      className="animate__animated animate__flip animate__delay-0s"
+      key={index}
       src={image}
     ></img>
   ));

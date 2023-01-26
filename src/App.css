@@ -1,13 +1,12 @@
-/* .App {
-  text-align: center;
-  align-items: center;
-  align-content: center;
-} */
-
 .navbar {
-  align-items: center;
-  align-content: center;
+  background-color: RGB(13 202 240);
+  color: black;
 }
+
+.my-custom-min-height{
+  min-height:55vh;
+}
+
 
 .slowlyVisible {
   animation: fadeIn 2s;

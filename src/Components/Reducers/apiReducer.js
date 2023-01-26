@@ -1,9 +1,8 @@
 const initialState = {
-  data: [],
+  data: ["Data"],
   loading: false,
   error: null,
 };
-
 export default function apiReducer(state = initialState, action) {
   switch (action.type) {
     case "FETCH_START":
@@ -22,6 +21,11 @@ export default function apiReducer(state = initialState, action) {
         ...state,
         loading: false,
         error: action.payload,
+      };
+    case "CLEAR_DATA":
+      return {
+        ...state,
+        data: [],
       };
     default:
       return state;

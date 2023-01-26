@@ -5,7 +5,9 @@ export const translationReducer = createSlice({
   name: "translation",
   initialState: {
     currentTranslation: "",
+    translations: [],
     imageData: [],
+    translationUserName: "",
   },
   reducers: {
     setTranslation: (state, action) => {
@@ -14,10 +16,21 @@ export const translationReducer = createSlice({
     setImageData: (state, action) => {
       state.imageData = action.payload;
     },
+    setTranslations: (state, action) => {
+      state.translations = action.payload;
+    },
+    setTranslationUserName: (state, action) => {
+      state.translationUserName = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setTranslation, setImageData } = translationReducer.actions;
+export const {
+  setTranslation,
+  setImageData,
+  setTranslations,
+  setTranslationUserName,
+} = translationReducer.actions;
 
 export default translationReducer.reducer;

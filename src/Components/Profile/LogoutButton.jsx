@@ -1,17 +1,20 @@
+import { async } from "q";
 import React from "react";
-import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { setTranslations } from "../Reducers/translationReducer";
 
 function LogoutButton() {
-  function handleClearLocalStorage() {
-    localStorage.clear();
-  }
+  const dispatch = useDispatch();
 
   return (
     <Link to="/login">
       <button
         className="btn btn-info all-button mt-5"
-        onClick={handleClearLocalStorage}
+        onClick={() => {
+          localStorage.clear();
+          dispatch(setTranslations([]));
+        }}
       >
         Logout
       </button>

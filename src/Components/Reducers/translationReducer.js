@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 export const translationReducer = createSlice({
   //Rename translationReport
   name: "translation",
@@ -19,7 +20,9 @@ export const translationReducer = createSlice({
     },
   },
 });
+
 // Action creators are generated for each case reducer function
 export const { setTranslation, setImageData, setTranslations } =
   translationReducer.actions;
+
 export default translationReducer.reducer;

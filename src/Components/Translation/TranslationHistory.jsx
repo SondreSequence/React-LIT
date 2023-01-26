@@ -7,6 +7,7 @@ function TranslationHistory() {
   const data = useSelector((state) => state.api.data);
   const loading = useSelector((state) => state.api.loading);
   const error = useSelector((state) => state.api.error);
+  const localUserArray = JSON.parse(localStorage.getItem("translation-user"));
   useEffect(() => {
     dispatch(fetchData("https://glaze-thankful-wombat.glitch.me/translations"));
   }, [dispatch]);
@@ -15,23 +16,9 @@ function TranslationHistory() {
   function returnTranslation() {
     return (
       data &&
-      data[0] &&
-      data[0].translations &&
-      data[0].translations.map((translation, index) => {
-        return (
-          <li key={index} className="list-group-item text-left">
-            {translation}
-          </li>
-        );
-      })
-    );
-  }
-  function returnTranslation() {
-    return (
-      data &&
-      data[0] &&
-      data[0].translations &&
-      data[0].translations.map((translation, index) => {
+      data[localUserArray.id - 1] &&
+      data[localUserArray.id - 1].translations &&
+      data[localUserArray.id - 1].translations.map((translation, index) => {
         return (
           <li key={index} className="list-group-item text-left">
             {translation}

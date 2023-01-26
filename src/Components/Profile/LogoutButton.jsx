@@ -1,12 +1,20 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import {useDispatch } from "react-redux";
+import { setTranslations } from "../Reducers/translationReducer";
 
 function LogoutButton() {
-  function handleClearLocalStorage() {
-    localStorage.clear();
-  }
+  const dispatch = useDispatch();
 
-  return <Button onClick={handleClearLocalStorage}>Logout</Button>;
+  return (
+    <Button onClick={() => {
+      localStorage.clear();
+      dispatch(setTranslations([]));
+    }}>
+      Logout
+    </Button>
+  );
 }
+
 
 export default LogoutButton;

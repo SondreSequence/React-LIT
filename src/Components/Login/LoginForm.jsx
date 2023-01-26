@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "animate.css";
 import { loginUser } from "../api/user";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUsername, setID } from "../Reducers/userReducer";
 import { storageSave } from "../storage";
 
 const usernameConfig = {
@@ -10,6 +14,9 @@ const usernameConfig = {
 };
 
 const LoginForm = () => {
+
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -18,6 +25,14 @@ const LoginForm = () => {
 
   const [loading, setLoading] = useState(false);
   const [apiError, setApiError] = useState(null);
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user !== null) {
+      navigate("/translate");
+    }
+  }, [user, navigate]);
 
   const onSubmit = async ({ username }) => {
     setLoading(true);
@@ -26,7 +41,13 @@ const LoginForm = () => {
       setApiError(error);
     }
     if (user !== null) {
+
+      dispatch(setUsername(username))
+      dispatch(setID(user.id))
+
+      storageSave("username", username);
       storageSave("translation-user", user);
+      setUser(user);
     }
     setLoading(false);
   };
@@ -47,23 +68,33 @@ const LoginForm = () => {
 
   return (
     <>
-      <h1>Enter Username</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <fieldset>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            placeholder="olanormann"
-            {...register("username", usernameConfig)}
-          />
+      <div className="d-flex flex-column text-center mt-5">
+        <h2>Enter Username</h2>
+        <form
+          className="d-flex flex-column text-center"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <fieldset className="mt-4">
+            <input
+              type="text"
+              placeholder="olanormann"
+              {...register("username", usernameConfig)}
+            />
+          </fieldset>
           {errorMessage}
-        </fieldset>
-        <button className="btn btn-primary" type="submit" disabled={loading}>
-          Continue
-        </button>
-        {loading && <p>Logging in...</p>}
-        {apiError && <p>{apiError}</p>}
-      </form>
+          <div class="d-grid gap-2 col-2 mx-auto m-4">
+            <button
+              className="btn btn-primary btn-lg"
+              type="submit"
+              disabled={loading}
+            >
+              Continue
+            </button>
+          </div>
+          {loading && <p>Logging in...</p>}
+          {apiError && <p>{apiError}</p>}
+        </form>
+      </div>
     </>
   );
 };

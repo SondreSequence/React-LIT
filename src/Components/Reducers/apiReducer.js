@@ -23,6 +23,11 @@ export default function apiReducer(state = initialState, action) {
         loading: false,
         error: action.payload,
       };
+    case "CLEAR_DATA":
+      return {
+        ...state,
+        data: [],
+      };
     default:
       return state;
   }

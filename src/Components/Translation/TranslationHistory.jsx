@@ -2,6 +2,10 @@ import { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../api/apiActions";
+
+import {setTranslations } from "../Reducers/translationReducer";
+import { updateUserTranslations } from "../api/user";
+
 function TranslationHistory() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.api.data);
@@ -35,6 +39,12 @@ function TranslationHistory() {
       <ul className="list-group list-group-flush ">
         {data && !loading && !error ? returnTranslation() : null}
       </ul>
+      <button onClick={() => {
+        dispatch({ type: "CLEAR_DATA" });
+      dispatch(setTranslations([]));
+      updateUserTranslations(localUserArray.id,[]);
+      
+}}> DELETE</button>
     </Card>
   );
 }

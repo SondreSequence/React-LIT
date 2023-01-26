@@ -1,4 +1,3 @@
-import { useSelector, useDispatch } from "react-redux";
 import { setImageData } from "../Reducers/translationReducer";
 
 export { mapEnglishSignsToHandEmojis, generateImages };
@@ -53,7 +52,21 @@ function randomizer(min, max) {
   return randomNumber;
 }
 
-function generateImages(imageSource) {
+function generateImages(imageSource, output) {
+
+  if(output.includes("rick")||output.includes("Rick")){
+const images = imageSource.map((image) => (
+    <img
+      key={randomizer(1, 1000)}
+      style={{ width: "150px", height: "100px" }}
+      className="animate__animated animate__flip animate__delay-0s"
+      src={"https://media1.giphy.com/media/7B25Ol4JQ3IMwQ7cxG/200w.gif?cid=82a1493bl9whn39jxp0f5kmtuff7bloxkruehil8dmldc45l&rid=200w.gif&ct=s"}
+    ></img>
+  ));
+
+  return images;
+  }
+
   const images = imageSource.map((image) => (
     <img
       key={randomizer(1, 1000)}

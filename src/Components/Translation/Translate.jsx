@@ -104,7 +104,7 @@ function Translate() {
         </form>
       </div>
       <nav id="translateArea" className="form-control mx-auto m-3">
-        {generateImages(imageSource)}
+        {generateImages(imageSource,output)}
         {fetchData("https://glaze-thankful-wombat.glitch.me/translations")}
       </nav>
     </nav>

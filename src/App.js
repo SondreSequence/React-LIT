@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
 import ProfilePage from "./Components/Pages/ProfilePage";
 import TranslatePage from "./Components/Pages/TranslatePage";
+import UserName from "./Components/Profile/UserName";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                   <Button variant="dark">Profile</Button>
                 </NavLink>
               </Nav.Link>
+              <UserName></UserName>
             </Nav>
           </Container>
         </Navbar>

@@ -8,11 +8,13 @@ function TranslationHistory() {
   const loading = useSelector((state) => state.api.loading);
   const error = useSelector((state) => state.api.error);
   const localUserArray = JSON.parse(localStorage.getItem("translation-user"));
+
   useEffect(() => {
     dispatch(fetchData("https://glaze-thankful-wombat.glitch.me/translations"));
   }, [dispatch]);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+
   function returnTranslation() {
     return (
       data &&

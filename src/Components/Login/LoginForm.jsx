@@ -2,6 +2,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import "animate.css";
 import { loginUser } from "../api/user";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUsername, setID } from "../Reducers/userReducer";
 import { storageSave } from "../storage";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +16,8 @@ const usernameConfig = {
 };
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
@@ -35,7 +41,10 @@ const LoginForm = () => {
     if (error !== null) {
       setApiError(error);
     }
+
     if (user !== null) {
+      dispatch(setUsername(username));
+      dispatch(setID(user.id));
       storageSave("username", username);
       storageSave("translation-user", user);
       setUser(user);

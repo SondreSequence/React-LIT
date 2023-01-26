@@ -3,7 +3,6 @@ const initialState = {
   loading: false,
   error: null,
 };
-
 export default function apiReducer(state = initialState, action) {
   switch (action.type) {
     case "FETCH_START":

@@ -19,11 +19,6 @@ function App() {
             </Navbar.Brand>
             <Nav>
               <Nav.Link>
-                <NavLink to="/">
-                  <Button variant="dark">Login</Button>
-                </NavLink>
-              </Nav.Link>
-              <Nav.Link>
                 <NavLink to="/translate">
                   <Button variant="dark">Translate</Button>
                 </NavLink>

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../api/apiActions";
+
 function TranslationHistory() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.api.data);
@@ -14,7 +15,7 @@ function TranslationHistory() {
   }, [dispatch]);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-
+  
   function returnTranslation() {
     return (
       data &&

@@ -3,9 +3,10 @@
   color: black;
 }
 
-.my-custom-min-height {
-  min-height: 55vh;
+.my-custom-min-height{
+  min-height:55vh;
 }
+
 
 .slowlyVisible {
   animation: fadeIn 2s;

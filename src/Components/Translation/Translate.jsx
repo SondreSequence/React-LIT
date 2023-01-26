@@ -16,9 +16,7 @@ function Translate() {
     dispatch(fetchData("https://glaze-thankful-wombat.glitch.me/translations"));
   }, [dispatch]);
 
-  const currentTranslation = useSelector(
-    (state) => state.translation.currentTranslation
-  );
+  const currentTranslation = useSelector((state) => state.translation.currentTranslation);
   const imageSource = useSelector((state) => state.translation.imageData);
   const translations = useSelector((state) => state.translation.translations);
   const localUserArray = JSON.parse(localStorage.getItem("translation-user"));
@@ -50,57 +48,23 @@ function Translate() {
       newTranslations.push(currentTranslation);
     }
 
-    if (currentTranslation.length > 0) {
-      dispatch(setTranslations(newTranslations));
-      updateUserTranslations(userID + 1, newTranslations);
-    } else return;
+    if(currentTranslation.length>0){
+    dispatch(setTranslations(newTranslations));
+    updateUserTranslations(userID + 1, newTranslations);}
+    else return;
   }
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(setTranslation(e.target.elements.input.value));
-    mapEnglishSignsToHandEmojis(
-      e.target.elements.input.value.toUpperCase(),
-      dispatch
-    );
+    mapEnglishSignsToHandEmojis(e.target.elements.input.value.toUpperCase(), dispatch);
     setAllTranslations();
   };
+
 
   const handleOnChange = (event) => {
     dispatch(setTranslation(event.target.value));
   };
-
-  function getTranslation() {
-    let newTranslations = [];
-    if (data && data[iDUSER] && data[iDUSER].translations) {
-      newTranslations = data[iDUSER].translations;
-      return newTranslations;
-    } else {
-      return [];
-    }
-  }
-
-  function setAllTranslations() {
-    let newTranslations = [...getTranslation()];
-    translations.forEach((translation) => {
-      if (!newTranslations.includes(translation)) {
-        newTranslations.push(translation);
-      }
-    });
-
-    if (newTranslations.length > 9) {
-      newTranslations.pop();
-      newTranslations.unshift(output);
-    } else {
-      newTranslations.push(output);
-    }
-
-    // Use the setTranslations action to update the state
-    dispatch(setTranslations(newTranslations));
-    updateUserTranslations(iDUSER + 1, newTranslations);
-
-    console.log(newTranslations);
-  }
 
   return (
     <div className="w-50 mx-auto mb-5">
@@ -118,7 +82,10 @@ function Translate() {
             placeholder="Translate Text"
             aria-label="Search"
           />
-          <button className="btn btn-info" type="submit">
+          <button
+            className="btn btn-info"
+            type="submit"
+          >
             Submit
           </button>
         </form>

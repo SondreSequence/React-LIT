@@ -7,8 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUsername, setID } from "../Reducers/userReducer";
 import { storageSave } from "../storage";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const usernameConfig = {
   required: true,
@@ -16,6 +14,7 @@ const usernameConfig = {
 };
 
 const LoginForm = () => {
+
   const dispatch = useDispatch();
 
   const {
@@ -41,10 +40,10 @@ const LoginForm = () => {
     if (error !== null) {
       setApiError(error);
     }
-
+    
     if (user !== null) {
-      dispatch(setUsername(username));
-      dispatch(setID(user.id));
+      dispatch(setUsername(username))
+      dispatch(setID(user.id))
       storageSave("username", username);
       storageSave("translation-user", user);
       setUser(user);

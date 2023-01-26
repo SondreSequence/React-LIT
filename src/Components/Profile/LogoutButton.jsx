@@ -19,8 +19,8 @@ function LogoutButton() {
         onClick={() => {
           localStorage.clear();
           dispatch(setTranslations([]));
-          dispatch(setID(0));
-          dispatch(setUsername(""));
+          dispatch(setID(0))
+          dispatch(setUsername(""))
         }}
       >
         Logout

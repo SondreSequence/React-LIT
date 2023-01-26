@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
 import ProfilePage from "./Components/Pages/ProfilePage";
 import TranslatePage from "./Components/Pages/TranslatePage";
-import UserName from "./Components/Profile/UserName";
+import { useSelector } from "react-redux";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
                   <Button variant="dark">Profile</Button>
                 </NavLink>
               </Nav.Link>
-              <UserName></UserName>
+              {useSelector((state) => state.user.userName)}
             </Nav>
           </Container>
         </Navbar>

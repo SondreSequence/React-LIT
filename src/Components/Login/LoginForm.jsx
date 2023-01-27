@@ -4,8 +4,6 @@ import "animate.css";
 import { loginUser } from "../api/user";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setUsername, setID } from "../Reducers/userReducer";
 import { storageSave } from "../storage";
 
 const usernameConfig = {
@@ -14,8 +12,6 @@ const usernameConfig = {
 };
 
 const LoginForm = () => {
-  const dispatch = useDispatch();
-
   const {
     register,
     handleSubmit,
@@ -41,9 +37,9 @@ const LoginForm = () => {
     }
 
     if (user !== null) {
-      dispatch(setUsername(username));
-      dispatch(setID(user.id));
       storageSave("translation-user", user);
+      storageSave("username", user);
+      storageSave("userID", user.id);
       setUser(user);
     }
     setLoading(false);

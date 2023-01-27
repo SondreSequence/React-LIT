@@ -1,8 +1,13 @@
-import { Navigate } from "react-router-dom";
 
+import { Navigate } from "react-router-dom";
 function withAuth(Component) {
   return function (props) {
-    if (localStorage.getItem("translation-user") !== null) {
+    
+    if(Component.name==="LoginPage"&&localStorage.getItem("username") !== null){
+    return <Navigate to="/translate" />;
+    }
+    
+    if (localStorage.getItem("username") !== null) {
       return <Component {...props} />;
     } else {
       return <Navigate to="/" />;

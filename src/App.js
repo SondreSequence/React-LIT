@@ -11,25 +11,20 @@ import { useSelector } from "react-redux";
 function App() {
   const username = useSelector((state) => state.user.userName);
   return (
-    <div className="bg-dark test">
+    <div className="background">
       <BrowserRouter>
-        <Navbar className="navbar">
+        <Navbar className="bg-dark">
           <Container>
-            <Navbar.Brand className="text-dark">
-              <h2>Translatorizor</h2>
+            <Navbar.Brand className="text-light">
+              <h2>Translaterizor</h2>
             </Navbar.Brand>
             <Nav>
-              <Nav.Link>
-                <NavLink to="/translate">
-                  <Button variant="dark">Translate</Button>
-                </NavLink>
-              </Nav.Link>
-              <Nav.Link>
-                <NavLink to="/profile">
-                  <Button variant="dark">Profile</Button>
-                </NavLink>
-              </Nav.Link>
-              {<p>{username}</p>}
+              <NavLink className="all-buttons" to="/translate">
+                <p>Translate</p>
+              </NavLink>
+              <NavLink className="all-buttons profile-button" to="/profile">
+                <p>{username ? username.replace(/\s.*/, "") : "Profile"}</p>
+              </NavLink>
             </Nav>
           </Container>
         </Navbar>

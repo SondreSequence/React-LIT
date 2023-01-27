@@ -65,7 +65,7 @@ function generateImages(imageSource, output) {
     return images;
   }
   images = imageSource.map((image, index) => (
-    <img alt="hands" style={{ width: "5vw", height: "5vw" }} key={index} src={image}></img>
+    <img className="hand-images" key={index} src={image}></img>
   ));
   return images;
 }

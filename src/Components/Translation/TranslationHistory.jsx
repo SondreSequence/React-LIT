@@ -32,14 +32,14 @@ function TranslationHistory() {
     );
   }
   return (
-    <Card className="mt-5">
-      <div className="card-header text-dark  ">
-        <h5>Translation History</h5>
+    <div>
+      <h2>Translation History</h2>
+      <div className="mt-3 translation-history">
+        <ul className="list-group list-group-flush">
+          {data && !loading && !error ? returnTranslation() : null}
+        </ul>
       </div>
-      <ul className="list-group list-group-flush ">
-        {data && !loading && !error ? returnTranslation() : null}
-      </ul>
-    </Card>
+    </div>
   );
 }
 export default TranslationHistory;

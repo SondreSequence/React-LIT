@@ -7,8 +7,8 @@ function DeleteButton() {
   const userID = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
   return (
-    <button
-      className="btn btn-info all-button mt-5"
+    <div
+      className="all-buttons delete-button"
       onClick={() => {
         updateUserTranslations(userID,[])
         dispatch(setTranslations([]));
@@ -16,8 +16,8 @@ function DeleteButton() {
         localStorage.removeItem("translations");
       }}
     >
-      Delete
-    </button>
+      <img className="icon " src={require("./delete-icon.png")}></img>
+    </div>
   );
 }
 

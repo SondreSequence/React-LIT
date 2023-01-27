@@ -6,8 +6,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
 import ProfilePage from "./Components/Pages/ProfilePage";
 import TranslatePage from "./Components/Pages/TranslatePage";
+import { useSelector } from "react-redux";
 
 function App() {
+  const username = useSelector((state) => state.user.userName);
   return (
     <div className="bg-dark test">
       <BrowserRouter>
@@ -27,6 +29,7 @@ function App() {
                   <Button variant="dark">Profile</Button>
                 </NavLink>
               </Nav.Link>
+              {<p>{username}</p>}
             </Nav>
           </Container>
         </Navbar>

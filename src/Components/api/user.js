@@ -1,6 +1,7 @@
 import { createHeaders } from "./index";
 const apiUrl = process.env.REACT_APP_API_URL;
 
+//checks the api for a username and returns the data if the user exists
 export const checkForUSer = async (username) => {
   try {
     const response = await fetch(`${apiUrl}?username=${username}`);
@@ -14,6 +15,7 @@ export const checkForUSer = async (username) => {
   }
 };
 
+// fetches a user by id and posts new translations into the users translation array
 export const updateUserTranslations = async (userId, newTranslations) => {
   try {
     const response = await fetch(`${apiUrl}/${userId}`, {
@@ -36,6 +38,7 @@ export const updateUserTranslations = async (userId, newTranslations) => {
   }
 };
 
+// fetches the api and posts a new user object into the api
 export const createUser = async (username) => {
   try {
     const response = await fetch(apiUrl, {
@@ -57,6 +60,7 @@ export const createUser = async (username) => {
   }
 };
 
+// checks if a user exists in the api and creates a new one if the username put in does not exist
 export const loginUser = async (username) => {
   const [checkError, user] = await checkForUSer(username);
 

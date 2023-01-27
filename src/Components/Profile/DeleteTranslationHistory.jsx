@@ -1,10 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { updateUserTranslations } from "../api/user";
 import { setTranslations } from "../Reducers/translationReducer";
 
 function DeleteButton() {
-  const userID = localStorage.getItem("userID");
+  const userID = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
   return (
     <button

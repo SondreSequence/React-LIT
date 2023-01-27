@@ -10,7 +10,10 @@ const usernameConfig = {
   required: true,
   minLength: 2,
 };
-
+/* 
+  generates the loginform where users input their username and get logged in if they exist in the api.
+  if they do not exist already a user with their username is generated in the api. 
+*/
 const LoginForm = () => {
   const {
     register,

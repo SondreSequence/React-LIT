@@ -37,7 +37,6 @@ const LoginForm = () => {
     }
 
     if (user !== null) {
-      storageSave("translation-user", user);
       storageSave("username", user);
       storageSave("userID", user.id);
       setUser(user);

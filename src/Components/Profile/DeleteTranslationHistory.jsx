@@ -11,6 +11,7 @@ function DeleteButton() {
     <button
       className="btn btn-info all-button mt-5"
       onClick={() => {
+        console.log(updateUserTranslations(userID, []));
         dispatch(setTranslations([]));
         dispatch({ type: "CLEAR_DATA" });
         localStorage.removeItem("translations");

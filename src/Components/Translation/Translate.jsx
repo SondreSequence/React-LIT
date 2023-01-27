@@ -21,9 +21,8 @@ function Translate() {
   );
   const imageSource = useSelector((state) => state.translation.imageData);
   const translations = useSelector((state) => state.translation.translations);
-  const localUserArray = JSON.parse(localStorage.getItem("translation-user"));
+  const userID = JSON.parse(localStorage.getItem("userID"))-1;
   const data = useSelector((state) => state.api.data);
-  const userID = localUserArray.id - 1;
 
   function getTranslation() {
     let oldTranslations = [];
@@ -43,9 +42,18 @@ function Translate() {
       }
     });
 
+    if (newTranslations.length >= 10) {
+      newTranslations.splice(0, newTranslations.length - 10);
+    }
+    translations.forEach((translation) => {
+      if (!newTranslations.includes(translation)) {
+        newTranslations.push(translation);
+      }
+    });
+
     if (newTranslations.length > 9) {
-      newTranslations.pop();
-      newTranslations.unshift(currentTranslation);
+      newTranslations.shift();
+      newTranslations.push(currentTranslation);
     } else {
       newTranslations.push(currentTranslation);
     }

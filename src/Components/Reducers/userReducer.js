@@ -1,6 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 
-export const userReducer = createSlice({
+const persistConfig = {
+  key: "user",
+  storage: storage,
+  whitelist: ["userName", "id"], // only userName and id will be persisted
+};
+
+const userSlice = createSlice({
   name: "user",
   initialState: {
     id: 0,
@@ -16,7 +24,5 @@ export const userReducer = createSlice({
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { setUsername, setID } = userReducer.actions;
-
-export default userReducer.reducer;
+export const { setUsername, setID } = userSlice.actions;
+export default persistReducer(persistConfig, userSlice.reducer);

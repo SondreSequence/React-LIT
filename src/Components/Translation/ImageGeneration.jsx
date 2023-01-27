@@ -53,6 +53,7 @@ function generateImages(imageSource, output) {
   if (output.includes("rick") || output.includes("Rick")) {
     images = imageSource.map((image, index) => (
       <img
+        alt="rick"
         key={index}
         style={{ width: "150px", height: "100px" }}
         className={randomanimationclass}

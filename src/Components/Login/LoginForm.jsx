@@ -4,18 +4,20 @@ import "animate.css";
 import { loginUser } from "../api/user";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { storageSave } from "../storage";
 import { useDispatch } from "react-redux";
 import { setUsername, setID } from "../Reducers/userReducer";
-import { storageSave } from "../storage";
 
 const usernameConfig = {
   required: true,
   minLength: 2,
 };
-
+/* 
+  generates the loginform where users input their username and get logged in if they exist in the api.
+  if they do not exist already a user with their username is generated in the api. 
+*/
 const LoginForm = () => {
   const dispatch = useDispatch();
-
   const {
     register,
     handleSubmit,
@@ -41,10 +43,10 @@ const LoginForm = () => {
     }
 
     if (user !== null) {
-      dispatch(setUsername(username));
+      storageSave("username", user);
+      storageSave("userID", user.id);
+      dispatch(setUsername(user.username));
       dispatch(setID(user.id));
-      storageSave("username", username);
-      storageSave("translation-user", user);
       setUser(user);
     }
     setLoading(false);

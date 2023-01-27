@@ -1,21 +1,19 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-
+import { useDispatch, useSelector} from "react-redux";
 import { updateUserTranslations } from "../api/user";
 import { setTranslations } from "../Reducers/translationReducer";
 
 function DeleteButton() {
-  const localUserArray = JSON.parse(localStorage.getItem("translation-user"));
-  const userId = localUserArray.id;
+  const userID = useSelector((state) => state.user.id);
   const dispatch = useDispatch();
-
   return (
     <div
       className="all-buttons delete-button"
       onClick={() => {
-        console.log(updateUserTranslations(userId, []));
+        updateUserTranslations(userID,[])
         dispatch(setTranslations([]));
         dispatch({ type: "CLEAR_DATA" });
+        localStorage.removeItem("translations");
       }}
     >
       <img className="icon " src={require("./delete-icon.png")}></img>

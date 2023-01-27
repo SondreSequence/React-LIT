@@ -9,12 +9,13 @@ import TranslatePage from "./Components/Pages/TranslatePage";
 import { useSelector } from "react-redux";
 
 function App() {
+  const username = useSelector((state) => state.user.userName);
   return (
     <div className="background">
       <BrowserRouter>
         <Navbar className="bg-dark">
           <Container>
-            <Navbar.Brand className="text-light">
+          <Navbar.Brand className="text-light">
               <h2>Translaterizor</h2>
             </Navbar.Brand>
             <Nav>
@@ -24,7 +25,7 @@ function App() {
               <NavLink className="all-buttons" to="/profile">
                 <p>Profile</p>
               </NavLink>
-              {useSelector((state) => state.user.userName)}
+              {<p>{username}</p>}
             </Nav>
           </Container>
         </Navbar>

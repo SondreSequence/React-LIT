@@ -34,4 +34,8 @@ Then run the vercel deploy command by running th following command:
 vercel 
 ```
 
+## Website
+you can also visit the hosting site to use the app:
+https://react-lit-sondresequence.vercel.app/
+
 

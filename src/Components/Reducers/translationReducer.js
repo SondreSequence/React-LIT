@@ -7,7 +7,6 @@ export const translationReducer = createSlice({
     currentTranslation: "",
     translations: [],
     imageData: [],
-    translationUserName: "",
   },
   reducers: {
     setTranslation: (state, action) => {
@@ -18,9 +17,6 @@ export const translationReducer = createSlice({
     },
     setTranslations: (state, action) => {
       state.translations = action.payload;
-    },
-    setTranslationUserName: (state, action) => {
-      state.translationUserName = action.payload;
     },
   },
 });

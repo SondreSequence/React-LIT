@@ -16,12 +16,13 @@ function Translate() {
     dispatch(fetchData("https://glaze-thankful-wombat.glitch.me/translations"));
   }, [dispatch]);
 
-  const currentTranslation = useSelector((state) => state.translation.currentTranslation);
+  const currentTranslation = useSelector(
+    (state) => state.translation.currentTranslation
+  );
   const imageSource = useSelector((state) => state.translation.imageData);
   const translations = useSelector((state) => state.translation.translations);
-  const localUserArray = JSON.parse(localStorage.getItem("translation-user"));
   const data = useSelector((state) => state.api.data);
-  const userID = localUserArray.id - 1;
+  const userID = useSelector((state) => state.user.id) - 1;
 
   function getTranslation() {
     let oldTranslations = [];
@@ -33,8 +34,17 @@ function Translate() {
     }
   }
 
-  function setAllTranslations(valuecheck) {
-    let newTranslations = [...getTranslation()];
+  //Combine translations with the current translations
+  function setAllTranslations() {
+    let newTranslations = [];
+    if (JSON.parse(localStorage.getItem("translations")) !== null) {
+      newTranslations = JSON.parse(localStorage.getItem("translations"));
+    } else {
+      newTranslations = [...getTranslation()];
+    }
+    if (newTranslations.length >= 10) {
+      newTranslations.splice(0, newTranslations.length - 10);
+    }
     translations.forEach((translation) => {
       if (!newTranslations.includes(translation)) {
         newTranslations.push(translation);
@@ -42,26 +52,36 @@ function Translate() {
     });
 
     if (newTranslations.length > 9) {
-      newTranslations.pop();
-      newTranslations.unshift(currentTranslation);
+      newTranslations.shift();
+      newTranslations.push(currentTranslation);
     } else {
       newTranslations.push(currentTranslation);
     }
 
-    if(currentTranslation.length>0){
-    dispatch(setTranslations(newTranslations));
-    updateUserTranslations(userID + 1, newTranslations);}
-    else return;
+    if (currentTranslation.length > 0) {
+      dispatch(setTranslations(newTranslations));
+      updateUserTranslations(userID + 1, newTranslations);
+      localStorage.setItem("translations", JSON.stringify(newTranslations));
+    } else return;
   }
 
+  /*In handle on submit we call update the state with the current translation that is in the input field.
+  Then we map the current translation to handemojis (specific image paths).
+  After that is done we update and combine the previous translations from the database with the current translation and post it.
+
+  We use e.preventDefault so that when we hit submit it doesn't automatically reload the page
+  */
   const handleOnSubmit = (e) => {
     e.preventDefault();
     dispatch(setTranslation(e.target.elements.input.value));
-    mapEnglishSignsToHandEmojis(e.target.elements.input.value.toUpperCase(), dispatch);
+    mapEnglishSignsToHandEmojis(
+      e.target.elements.input.value.toUpperCase(),
+      dispatch
+    );
     setAllTranslations();
   };
 
-
+  //Update the translation data in the text input live
   const handleOnChange = (event) => {
     dispatch(setTranslation(event.target.value));
   };
@@ -82,10 +102,7 @@ function Translate() {
             placeholder="Translate Text"
             aria-label="Search"
           />
-          <button
-            className="btn btn-info"
-            type="submit"
-          >
+          <button className="btn btn-info" type="submit">
             Submit
           </button>
         </form>

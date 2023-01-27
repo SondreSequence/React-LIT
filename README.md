@@ -25,5 +25,13 @@ npm start
 To build the app for production, run the following command:
 
 ```bash
-"vercel command"...
+npm install -g vercel
 ```
+
+Then run the vercel deploy command by running th following command:
+
+```bash
+vercel 
+```
+
+

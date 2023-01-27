@@ -1,7 +1,7 @@
 import "./App.css";
 import LoginPage from "./Components/Pages/LoginPage";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import { Container, Button, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "animate.css";
 import ProfilePage from "./Components/Pages/ProfilePage";

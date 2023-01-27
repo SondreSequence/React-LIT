@@ -16,7 +16,7 @@ function DeleteButton() {
         localStorage.removeItem("translations");
       }}
     >
-      <img className="icon " src={require("./delete-icon.png")}></img>
+      <img className="icon" alt="Trashcan" src={require("./delete-icon.png")}></img>
     </div>
   );
 }

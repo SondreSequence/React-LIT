@@ -50,6 +50,7 @@ function generateImages(imageSource, output) {
     "animate__animated " + randomanimations[randomIndex] + " animate__delay-0s";
   let images = [];
 
+  //Easter egg
   if (output.includes("rick") || output.includes("Rick")) {
     images = imageSource.map((image, index) => (
       <img
@@ -65,7 +66,7 @@ function generateImages(imageSource, output) {
     return images;
   }
   images = imageSource.map((image, index) => (
-    <img className="hand-images" key={index} src={image}></img>
+    <img alt="hands" style={{ width: "5vw", height: "5vw" }} key={index} src={image}></img>
   ));
   return images;
 }

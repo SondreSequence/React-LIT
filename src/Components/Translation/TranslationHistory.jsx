@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Card } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData } from "../api/apiActions";
 

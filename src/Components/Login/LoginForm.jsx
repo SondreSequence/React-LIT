@@ -14,7 +14,7 @@ const usernameConfig = {
 };
 /* 
   generates the loginform where users input their username and get logged in if they exist in the api.
-  if they do not exist already a user with their username is generated in the api. 
+  If they do not exist already a user with their username is generated in the api. 
 */
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -89,7 +89,7 @@ const LoginForm = () => {
             type="submit"
             disabled={loading}
           >
-            <img className="icon" src={require("./arrow-icon.png")}></img>
+            <img className="icon" alt="arrow" src={require("./arrow-icon.png")}></img>
           </button>
         </form>
         {apiError && <p>{apiError}</p>}

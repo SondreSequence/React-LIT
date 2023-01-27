@@ -8,7 +8,7 @@ function TranslationHistory() {
   const data = useSelector((state) => state.api.data);
   const loading = useSelector((state) => state.api.loading);
   const error = useSelector((state) => state.api.error);
-  const userID = localStorage.getItem("userID")-1;
+  const userID = useSelector((state) => state.user.id)-1;
 
   useEffect(() => {
     dispatch(fetchData("https://glaze-thankful-wombat.glitch.me/translations"));

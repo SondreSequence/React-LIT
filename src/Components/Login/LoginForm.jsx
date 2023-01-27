@@ -5,6 +5,12 @@ import { loginUser } from "../api/user";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { storageSave } from "../storage";
+import {useDispatch } from "react-redux";
+import {
+  setUsername,
+  setID,
+} from "../Reducers/userReducer";
+
 
 const usernameConfig = {
   required: true,
@@ -12,6 +18,7 @@ const usernameConfig = {
 };
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -39,6 +46,8 @@ const LoginForm = () => {
     if (user !== null) {
       storageSave("username", user);
       storageSave("userID", user.id);
+      dispatch(setUsername(user.username));
+      dispatch(setID(user.id));
       setUser(user);
     }
     setLoading(false);

@@ -13,18 +13,18 @@ function LogoutButton() {
   const dispatch = useDispatch();
 
   return (
-    <Link to="/">
-      <button
-        className="btn btn-info all-button mt-5"
+    <Link to="/" class="logout-button">
+      <div
+        className="all-buttons "
         onClick={() => {
           localStorage.clear();
           dispatch(setTranslations([]));
-          dispatch(setID(0))
-          dispatch(setUsername(""))
+          dispatch(setID(0));
+          dispatch(setUsername(""));
         }}
       >
         Logout
-      </button>
+      </div>
     </Link>
   );
 }

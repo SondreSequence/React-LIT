@@ -14,7 +14,6 @@ const usernameConfig = {
 };
 
 const LoginForm = () => {
-
   const dispatch = useDispatch();
 
   const {
@@ -40,10 +39,10 @@ const LoginForm = () => {
     if (error !== null) {
       setApiError(error);
     }
-    
+
     if (user !== null) {
-      dispatch(setUsername(username))
-      dispatch(setID(user.id))
+      dispatch(setUsername(username));
+      dispatch(setID(user.id));
       storageSave("username", username);
       storageSave("translation-user", user);
       setUser(user);
@@ -57,44 +56,45 @@ const LoginForm = () => {
     }
 
     if (errors.username.type === "required") {
-      return <span>Username is required</span>;
+      return <span className="error">Username is required</span>;
     }
 
     if (errors.username.type === "minLength") {
-      return <span>Username is too short</span>;
+      return <span className="error">Username is too short</span>;
     }
   })();
 
   return (
-    <>
-      <div className="d-flex flex-column text-center mt-5">
-        <h2>Enter Username</h2>
+    <div className="card-container w-50 mx-auto justify-content-center d-flex">
+      <div className="d-flex flex-column justify-content-center">
+        <h2 className="mx-auto ">Enter Username</h2>
+
         <form
-          className="d-flex flex-column text-center"
+          className="d-flex mx-auto mt-3 form-container"
           onSubmit={handleSubmit(onSubmit)}
         >
-          <fieldset className="mt-4">
+          <fieldset>
             <input
+              className="form-control form-control-lg ml-5"
               type="text"
               placeholder="olanormann"
               {...register("username", usernameConfig)}
             />
           </fieldset>
-          {errorMessage}
-          <div class="d-grid gap-2 col-2 mx-auto m-4">
-            <button
-              className="btn btn-primary btn-lg"
-              type="submit"
-              disabled={loading}
-            >
-              Continue
-            </button>
-          </div>
-          {loading && <p>Logging in...</p>}
-          {apiError && <p>{apiError}</p>}
+
+          <button
+            className="all-buttons username-button"
+            type="submit"
+            disabled={loading}
+          >
+            <img className="icon" src={require("./arrow-icon.png")}></img>
+          </button>
         </form>
+        {apiError && <p>{apiError}</p>}
+        {loading && <p className="loading">Logging in...</p>}
+        {errorMessage}
       </div>
-    </>
+    </div>
   );
 };
 

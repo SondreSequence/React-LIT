@@ -10,16 +10,16 @@ function DeleteButton() {
   const dispatch = useDispatch();
 
   return (
-    <button
-      className="btn btn-info all-button mt-5"
+    <div
+      className="all-buttons delete-button"
       onClick={() => {
         console.log(updateUserTranslations(userId, []));
         dispatch(setTranslations([]));
         dispatch({ type: "CLEAR_DATA" });
       }}
     >
-      Delete
-    </button>
+      <img className="icon " src={require("./delete-icon.png")}></img>
+    </div>
   );
 }
 

@@ -10,25 +10,20 @@ import { useSelector } from "react-redux";
 
 function App() {
   return (
-    <div className="bg-dark test">
+    <div className="background">
       <BrowserRouter>
-        <Navbar className="navbar">
+        <Navbar className="bg-dark">
           <Container>
-            <Navbar.Brand className="text-dark">
-              <h2>Translatorizor</h2>
-              {/* <img className="w-25 p-3" src={require("./Logo.png")}></img> */}
+            <Navbar.Brand className="text-light">
+              <h2>Translaterizor</h2>
             </Navbar.Brand>
             <Nav>
-              <Nav.Link>
-                <NavLink to="/translate">
-                  <Button variant="dark">Translate</Button>
-                </NavLink>
-              </Nav.Link>
-              <Nav.Link>
-                <NavLink to="/profile">
-                  <Button variant="dark">Profile</Button>
-                </NavLink>
-              </Nav.Link>
+              <NavLink className="all-buttons" to="/translate">
+                <p>Translate</p>
+              </NavLink>
+              <NavLink className="all-buttons" to="/profile">
+                <p>Profile</p>
+              </NavLink>
               {useSelector((state) => state.user.userName)}
             </Nav>
           </Container>

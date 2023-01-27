@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import {
+  setImageData,
   setTranslation,
   setTranslations,
 } from "../Reducers/translationReducer";
@@ -13,6 +14,7 @@ function Translate() {
   const dispatch = useDispatch();
   //Load API DATA
   useEffect(() => {
+    dispatch(setImageData([]));
     dispatch(fetchData("https://glaze-thankful-wombat.glitch.me/translations"));
   }, [dispatch]);
 
@@ -21,7 +23,7 @@ function Translate() {
   );
   const imageSource = useSelector((state) => state.translation.imageData);
   const translations = useSelector((state) => state.translation.translations);
-  const userID = JSON.parse(localStorage.getItem("userID"))-1;
+  const userID = JSON.parse(localStorage.getItem("userID")) - 1;
   const data = useSelector((state) => state.api.data);
 
   function getTranslation() {
@@ -92,7 +94,7 @@ function Translate() {
             onChange={handleOnChange}
             className="form-control input-field"
             type="search"
-            placeholder="Translate Text"
+            placeholder="Translate text ... (don't type 'Rick')"
             aria-label="Search"
           />
           <button className="all-buttons">Submit</button>

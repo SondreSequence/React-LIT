@@ -11,12 +11,16 @@ p {
 }
 
 .username-button {
-  width: 10vw !important;
-  height: auto;
+  width: 5vw !important;
+  height: 48px !important;
 }
 
 .form-container {
   flex-direction: row;
+}
+
+.profile-button {
+  width: 100px !important;
 }
 
 .error {

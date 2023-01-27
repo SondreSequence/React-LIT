@@ -15,17 +15,16 @@ function App() {
       <BrowserRouter>
         <Navbar className="bg-dark">
           <Container>
-          <Navbar.Brand className="text-light">
+            <Navbar.Brand className="text-light">
               <h2>Translaterizor</h2>
             </Navbar.Brand>
             <Nav>
               <NavLink className="all-buttons" to="/translate">
                 <p>Translate</p>
               </NavLink>
-              <NavLink className="all-buttons" to="/profile">
-                <p>Profile</p>
+              <NavLink className="all-buttons profile-button" to="/profile">
+                <p>{username ? username.replace(/\s.*/, "") : "Profile"}</p>
               </NavLink>
-              {<p>{username}</p>}
             </Nav>
           </Container>
         </Navbar>

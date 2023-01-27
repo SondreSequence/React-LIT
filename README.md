@@ -3,9 +3,9 @@
 Welcome to the Translatorizer, a web application built using React and Redux that allows users to translate text to sign language.
 
 ## Authors
-Johann Braaten (JohBraExperis)
-Sondre Kristoffer Reinholdtsen (SondreSequence)
-Tord Vetle Gjertsen(Tartarpaste)
+- Johann Braaten (JohBraExperis)
+- Sondre Kristoffer Reinholdtsen (SondreSequence)
+- Tord Vetle Gjertsen(Tartarpaste)
 
 ## Features
 - Create or login with a username.
